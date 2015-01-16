@@ -3,7 +3,7 @@
 echo "Hello bob's world\n";
 echo "This will be fun! \n";
 
-
+new PDO("localhost", "root", "");
 $x = 24;
 $y = 50;
 
