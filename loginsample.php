@@ -29,11 +29,13 @@ function makeUser(){
     $length = 60;
     $result = genKey($length);
 
-    $hash = "SHA1(CONCAT(salt,:password))";
-    //   $stmt = $db->prepare("Select * from User where (username, hash) = (Select username, SHA1(CONCAT(salt, :password)) as hash FROM User where username = :username)");
-    $stmt = $db->prepare("Select * from User where (username = :username)");
+    $hash = "SHA1(CONCAT($result,$password))";
+    global $db;
+    $stmt = $db->prepare("Insert into User where (username = :username, email=:email, salt=:result, hash=:hash, avatar=1)");
 
-
+    $stmt->bindValue(":email", $email);
+    $stmt->bindValue(":result", $result);
+    $stmt->bindValue(":hash", $hash);
     $stmt->bindValue(":username", $username);
 
     $stmt->execute();
