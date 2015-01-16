@@ -31,7 +31,8 @@ function makeUser(){
 
     $hash = "SHA1(CONCAT($result,$password))";
     global $db;
-    $stmt = $db->prepare("Insert into User where (username = :username, email=:email, salt=:result, hash=:hash, avatar=1)");
+
+    $stmt= $db->prepare("insert into USER (userName, email, salt, hash, avatar) VALUES (:username, :email, :result, :hash, 1);");
 
     $stmt->bindValue(":email", $email);
     $stmt->bindValue(":result", $result);
@@ -40,12 +41,11 @@ function makeUser(){
 
     $stmt->execute();
 
-
-
-
-
-
 }
+
+echo $db->prepare("select * from USER; ");
+
+
 
 ?>
 
