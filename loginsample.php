@@ -9,7 +9,7 @@ session_start();
 function DBConnection(){
     try
     {
-        $db = new PDO("mysql:host=127.0.0.1;dbname=", "root", "");
+        $db = new PDO("mysql:host=127.0.0.1;dbname='PROJECT', 'root', ''");
     }
     catch(Exception $ex)
     {
