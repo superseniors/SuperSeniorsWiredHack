@@ -1,5 +1,7 @@
 use PROJECT;
 
+DROP TABLES EVENT, POST, ORG, USER;
+
 CREATE TABLE USER (
 id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
 userName VARCHAR(20) NOT NULL UNIQUE,
@@ -16,12 +18,12 @@ company VARCHAR(150) NOT NULL,
 salt CHAR(60) NOT NULL,
 HASH CHAR(85),
 addressOne VARCHAR(50) NOT NULL,
-addressTwo VARCHAR(50) NOT NULL,
+addressTwo VARCHAR(50),
 city VARCHAR (25) NOT NULL,
 state VARCHAR(2) NOT NULL,
 zip CHAR(5) NOT NULL,
 phoneOne VARCHAR(10) NOT NULL,
-phoneTwo VARCHAR(10) NOT NULL,
+phoneTwo VARCHAR(10),
 fax VARCHAR(10),
 email VARCHAR(30) NOT NULL UNIQUE,
 website VARCHAR(30) NOT NULL UNIQUE
@@ -50,11 +52,20 @@ streetAddress VARCHAR(50) NOT NULL,
 city VARCHAR (25) NOT NULL,
 state VARCHAR(2) NOT NULL,
 zip CHAR(5) NOT NULL,
-orgIDEvent INT UNSIGNED NOT NULL,
-FOREIGN KEY (orgIDEvent) REFERENCES ORG(id) ON DELETE CASCADE ON UPDATE CASCADE
+orgID INT UNSIGNED NOT NULL,
+FOREIGN KEY (orgID) REFERENCES ORG(id) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
-insert into ORG (id, userName, email, salt, hash, addressOne, addressTwo, city, 
-state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", 
-schwartz37@gmail.com, );
-drop table test;
+insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
+state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+
+insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
+state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+
+insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
+state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+
+insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
+state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+
+, 
