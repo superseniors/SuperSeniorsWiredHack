@@ -1,0 +1,47 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ubuntu
+ * Date: 1/16/15
+ * Time: 7:41 PM
+ */
+
+    try
+    {
+        $db = new PDO("mysql:host=localhost;dbname=PROJECT", 'root', '' );
+    }
+    catch(Exception $ex)
+    {
+        die($ex->getMessage());
+    }
+
+
+
+
+
+
+$username= $_POST["username"];
+
+$password=$_POST["password"];
+
+$email= $_POST["email"];
+
+require 'saltgen.php';
+$length = 60;
+$result = genKey($length);
+
+$hash = SHA1($result.$password);
+
+global $db;
+
+$stmt= $db->prepare("insert into USER (userName, email, salt, hash, avatar) VALUES (:username, :email, :result, :hash, 1);");
+
+$stmt->bindValue(":email", $email);
+$stmt->bindValue(":result", $result);
+$stmt->bindValue(":hash", $hash);
+$stmt->bindValue(":username", $username);
+
+$stmt->execute();
+
+header("Location: http://localhost/HackFinal/index.php"); /* Redirect browser */
+exit();
