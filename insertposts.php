@@ -37,3 +37,5 @@ $stmt->bindValue(":userID", $userid);
 
 $stmt->execute();
 
+header("Location: http://localhost/SuperSeniorsWiredHack/getInvolved.html.php"); /* Redirect browser */
+exit();
