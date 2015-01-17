@@ -39,6 +39,10 @@
 	padding-bottom:5px;
 }
 
+#topPortion{
+	color: #000000;
+	background-color:rgba(192,192,192,0.7);
+	}
 #second{
 	padding:10px;
 }
@@ -46,4 +50,28 @@
 #third{
 	padding:10px;
 }
+
+#button1 {
+		margin-left: 12%;
+		width:310px;
+		height: 70px;
+		background-color:#8BD3C1;
+		-moz-border-radius: 15px;
+		-webkit-border-radius: 15px;
+		border-radius: 15px;
+		display: inline-block;
+		border-radius: 15px;
+		text-align: center;
+		
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+#buttonWords1{
+	margin-top: -4%;
+}
+
+
 
