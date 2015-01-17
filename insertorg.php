@@ -6,14 +6,14 @@
  * Time: 7:41 PM
  */
 
-    try
-    {
-        $db = new PDO("mysql:host=localhost;dbname=PROJECT", 'root', '' );
-    }
-    catch(Exception $ex)
-    {
-        die($ex->getMessage());
-    }
+try
+{
+    $db = new PDO("mysql:host=localhost;dbname=PROJECT", 'root', '' );
+}
+catch(Exception $ex)
+{
+    die($ex->getMessage());
+}
 
 
 
