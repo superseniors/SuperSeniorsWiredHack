@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if($_SESSION["orgID"]=NULL){
+if($_SESSION["orgID"]==NULL){
     header("Location: http://localhost/SuperSeniorsWiredHack/index.php"); /* Redirect browser */
     exit();
 
