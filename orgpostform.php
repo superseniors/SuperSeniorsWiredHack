@@ -9,26 +9,22 @@ session_start();
 //yyyy-mm-dd
 //hh:mm AM
 
-require 'saltgen.php';
-
-
-
 ?>
 
 <html>
 <head></head>
 <body>
-<form method="post" action="insertorg.php">
+<form method="post" action="insertorgpost.php">
     <label for="title">Title</label>
     <input name="title" type="text"><br/><br/>
-    <label for="startDate">Start Date</label>
-    <input name="startDate" type="date"><br/><br/>
+    <label for="startDate">Start Date (yyyy-mm-dd)</label>
+    <input name="startDate" type="text"><br/><br/>
     <label for="startTime">Start Time</label>
     <input name="startTime" type="text"><br/><br/>
     <label for="endTime">End Time</label>
     <input name="endTime" type="text"><br/><br/>
     <label for="description">Event Description</label>
-    <textarea name="description"><br/><br/>
+    <textarea name="description"></textarea><br/><br/>
     <label for="streetAddress">Event Address</label>
     <input name="streetAddress" type="text"><br/><br/>
     <label for="city">city</label>

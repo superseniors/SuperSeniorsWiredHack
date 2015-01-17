@@ -1,6 +1,14 @@
 <?php
 session_start();
 $_SESSION["orgID"]=1;
+
+//if($_SESSION["orgID"]=NULL){
+//header("Location: http://localhost/SuperSeniorsWiredHack/index.php"); /* Redirect browser */
+//exit();
+//
+//}
+
+
 /**
  * Created by PhpStorm.
  * User: ubuntu
@@ -17,17 +25,6 @@ catch(Exception $ex)
     die($ex->getMessage());
 }
 
-title
-startDate
-startTime
-endTime
-description
-streetAddress
-city
-state
-zip
-orgID
-
 
 $title= $_POST["title"];
 $startDate=$_POST["startDate"];
@@ -39,33 +36,27 @@ $zip= $_POST["zip"];
 $state= $_POST["state"];
 $streetAddress= $_POST["streetAddress"];
 
-    $stmt = $db->prepare("Select company from ORG where (orgID = :orgID)");
-    $stmt->bindValue(":orgID", $_SESSION["orgID"]);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+//    $stmt = $db->prepare("Select company from ORG where (id = :orgID)");
+  //  $stmt->bindValue(":orgID", $_SESSION["orgID"]);
+    //$stmt->execute();
+    //$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-require 'saltgen.php';
-$length = 60;
-$result = genKey($length);
-
-$hash = SHA1($result.$password);
 
 global $db;
 
-$stmt= $db->prepare("insert into ORG(coUserName, company, salt, hash, address, city, state, zip, phone, email, website) VALUES (:username,:company, :result, :hash, :address, :city, :state, :zip, :phone, :email, :website);");
+$stmt= $db->prepare("insert into EVENT(title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (:title, :startDate, :startTime, :endTime, :description, :streetAddress, :city, :state, :zip, :orgid );");
 
-$stmt->bindValue(":username", $username);
-$stmt->bindValue(":company", $company);
-$stmt->bindValue(":result", $result);
-$stmt->bindValue(":hash", $hash);
-$stmt->bindValue(":address", $address);
+$stmt->bindValue(":title", $title);
+$stmt->bindValue(":startDate", $startDate);
+$stmt->bindValue(":startTime", $startTime);
+$stmt->bindValue(":endTime", $endTime);
+$stmt->bindValue(":description", $description);
 $stmt->bindValue(":city", $city);
 $stmt->bindValue(":state", $state);
 $stmt->bindValue(":zip", $zip);
-$stmt->bindValue(":phone", $phone);
-$stmt->bindValue(":email", $email);
-$stmt->bindValue(":website", $website);
+$stmt->bindValue(":streetAddress", $streetAddress);
+$stmt->bindValue(":orgid", $_SESSION["orgID"]);
+
 
 $stmt->execute();
 
