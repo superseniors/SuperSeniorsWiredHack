@@ -1,12 +1,11 @@
 <?php
 session_start();
-$_SESSION["orgID"]=1;
 
-//if($_SESSION["orgID"]=NULL){
-//header("Location: http://localhost/SuperSeniorsWiredHack/index.php"); /* Redirect browser */
-//exit();
-//
-//}
+if($_SESSION["orgID"]=NULL){
+    header("Location: http://localhost/SuperSeniorsWiredHack/index.php"); /* Redirect browser */
+    exit();
+
+}
 
 
 /**
@@ -40,11 +39,12 @@ $streetAddress= $_POST["streetAddress"];
   //  $stmt->bindValue(":orgID", $_SESSION["orgID"]);
     //$stmt->execute();
     //$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+$orgid=$_SESSION["orgID"];
+settype( $orgid , $int );
 
 global $db;
 
-$stmt= $db->prepare("insert into EVENT(title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (:title, :startDate, :startTime, :endTime, :description, :streetAddress, :city, :state, :zip, :orgid );");
+$stmt= $db->prepare("insert into EVENT(title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (:title, :startDate, :startTime, :endTime, :description, :streetAddress, :city, :state, :zip, :orgid);");
 
 $stmt->bindValue(":title", $title);
 $stmt->bindValue(":startDate", $startDate);
@@ -55,7 +55,7 @@ $stmt->bindValue(":city", $city);
 $stmt->bindValue(":state", $state);
 $stmt->bindValue(":zip", $zip);
 $stmt->bindValue(":streetAddress", $streetAddress);
-$stmt->bindValue(":orgid", $_SESSION["orgID"]);
+$stmt->bindValue(":orgid", $orgid);
 
 
 $stmt->execute();
