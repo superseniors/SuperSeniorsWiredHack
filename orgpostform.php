@@ -13,19 +13,6 @@ require 'saltgen.php';
 
 
 
-
-title
-startDate
-startTime
-endTime
-description
-streetAddress
-city
-state
-zip
-orgID
-
-
 ?>
 
 <html>
