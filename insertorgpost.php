@@ -8,13 +8,6 @@ if($_SESSION["orgID"]==NULL){
 }
 
 
-/**
- * Created by PhpStorm.
- * User: ubuntu
- * Date: 1/16/15
- * Time: 7:41 PM
- */
-
 try
 {
     $db = new PDO("mysql:host=localhost;dbname=PROJECT", 'root', '' );
