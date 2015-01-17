@@ -21,7 +21,7 @@ address VARCHAR(50) NOT NULL,
 city VARCHAR (25) NOT NULL,
 state VARCHAR(2) NOT NULL,
 zip CHAR(5) NOT NULL,
-phone VARCHAR(10) NOT NULL,
+phone VARCHAR(14) NOT NULL,
 email VARCHAR(30) NOT NULL UNIQUE,
 website VARCHAR(30) NOT NULL UNIQUE
 )ENGINE=InnoDB;
@@ -41,8 +41,8 @@ CREATE TABLE EVENT (
 id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
 title VARCHAR(75) NOT NULL,
 startDate DATE NOT NULL,
-startTime TIMESTAMP NOT NULL,
-endTime TIMESTAMP NOT NULL,
+startTime VARCHAR(10) NOT NULL,
+endTime VARCHAR(10) NOT NULL,
 description VARCHAR(300) NOT NULL,
 streetAddress VARCHAR(50) NOT NULL,
 city VARCHAR (25) NOT NULL,
@@ -92,5 +92,5 @@ insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, 
 
 insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, "United in Design", "United Way", "We helped United Way prepare for their yearly drive.  We not only assited with material distribution, but we helped them with the design.  Then we participated in a food drive and delivered the food to a local shelter.", "1", "1");   
 
-insert into EVENT (id, title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (NULL, "Morgan Freeman: A narration of life", "2015/02/14", "2015-01-14 16:30:01", "2015-01-14 18:30:01", "Morgan Freeman tells the creation of the world in his classical uplifiting style.  Enjoy an evening of Morgan Freeman.", "245 Morgan Freeman Center", "Rock Hill", "SC", "29730", "1");   
+insert into EVENT (id, title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (NULL, "Morgan Freeman: A narration of life", "2015-02-14", "4:30 PM", "6:30 PM", "Morgan Freeman tells the creation of the world in his classical uplifiting style.  Enjoy an evening of Morgan Freeman.", "245 Morgan Freeman Center", "Rock Hill", "SC", "29730", "1");   
 
