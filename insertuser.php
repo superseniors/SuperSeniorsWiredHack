@@ -33,9 +33,7 @@ $result = genKey($length);
 $hash = SHA1($result.$password);
 
 global $db;
-echo $result;
-echo "end of salt \r\n";
-echo $hash;
+
 $stmt= $db->prepare("insert into USER (userName, email, salt, hash, avatar) VALUES (:username, :email, :result, :hash, 1);");
 
 $stmt->bindValue(":email", $email);

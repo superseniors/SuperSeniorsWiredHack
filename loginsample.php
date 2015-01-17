@@ -10,12 +10,7 @@ session_start();
 
 require 'saltgen.php';
 
-function makeUser(){
 
-}
-
-//$stmt2= $db->prepare("select * from USER; ");
-//echo $stmt2->execute();
 
  ?>
 

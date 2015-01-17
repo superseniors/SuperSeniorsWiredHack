@@ -21,10 +21,18 @@ catch(Exception $ex)
 
 
 $username= $_POST["username"];
-
 $password=$_POST["password"];
-
 $email= $_POST["email"];
+$username= $_POST["company"];
+$username= $_POST["address"];
+$username= $_POST["city"];
+$username= $_POST["zip"];
+$username= $_POST["state"];
+$username= $_POST["phone"];
+$username= $_POST["website"];
+
+
+
 
 require 'saltgen.php';
 $length = 60;
@@ -33,14 +41,19 @@ $result = genKey($length);
 $hash = SHA1($result.$password);
 
 global $db;
-echo $result;
-echo "end of salt \r\n";
-echo $hash;
-$stmt= $db->prepare("insert into USER (userName, email, salt, hash, avatar) VALUES (:username, :email, :result, :hash, 1);");
+
+$stmt= $db->prepare("insert into ORG (coUsername, company, salt, HASH, address, city, state, zip, phone, email, website) VALUES (:username,:company, :result, :hash, :address, :city, :state, :zip, :phone, :email, :website);");
 
 $stmt->bindValue(":email", $email);
 $stmt->bindValue(":result", $result);
 $stmt->bindValue(":hash", $hash);
 $stmt->bindValue(":username", $username);
+$stmt->bindValue(":company", $company);
+$stmt->bindValue(":address", $address);
+$stmt->bindValue(":city", $city);
+$stmt->bindValue(":state", $state);
+$stmt->bindValue(":zip", $zip);
+$stmt->bindValue(":website", $website);
+$stmt->bindValue(":phone", $phone);
 
 $stmt->execute();
