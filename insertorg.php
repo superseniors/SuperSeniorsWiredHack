@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: ubuntu
@@ -40,18 +41,19 @@ $hash = SHA1($result.$password);
 
 global $db;
 
-$stmt= $db->prepare("insert into ORG (coUsername, company, salt, HASH, address, city, state, zip, phone, email, website) VALUES (:username,:company, :result, :hash, :address, :city, :state, :zip, :phone, :email, :website);");
+$stmt= $db->prepare("insert into ORG(coUserName, company, salt, hash, address, city, state, zip, phone, email, website) VALUES (:username,:company, :result, :hash, :address, :city, :state, :zip, :phone, :email, :website);");
 
-$stmt->bindValue(":email", $email);
-$stmt->bindValue(":result", $result);
-$stmt->bindValue(":hash", $hash);
 $stmt->bindValue(":username", $username);
 $stmt->bindValue(":company", $company);
+$stmt->bindValue(":result", $result);
+$stmt->bindValue(":hash", $hash);
 $stmt->bindValue(":address", $address);
 $stmt->bindValue(":city", $city);
 $stmt->bindValue(":state", $state);
 $stmt->bindValue(":zip", $zip);
-$stmt->bindValue(":website", $website);
 $stmt->bindValue(":phone", $phone);
+$stmt->bindValue(":email", $email);
+$stmt->bindValue(":website", $website);
 
 $stmt->execute();
+
