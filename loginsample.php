@@ -52,10 +52,11 @@ echo $db->prepare("select * from USER; ");
 <html>
 <head></head>
 <body>
-    <form method="post" action="<? makeUser('username') ?>">
+    <form method="post" action="<? makeUser() ?>">
         <input name="username" type="text">
         <input name="password" type="password">
         <input name="email" type="email">
+        <input type="submit" name="Submit">
     </form>
 
 

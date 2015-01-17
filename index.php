@@ -1,17 +1,25 @@
 <?php
+require 'saltgen.php';
+$password="password";
 
-echo "Hello bob's world\n";
-echo "This will be fun! \n";
+$length = 60;
+$result = genKey($length);
 
-new PDO("localhost", "root", "");
-$x = 24;
-$y = 50;
+$hash = SHA1($result.$password);
+echo $result;
+//echo $hash;
+?>
+<html>
+<body>
+<br/>
+<br/>
 
-function combine($x, $y){
-    $a = $x + $y;
-    return $a;
-}
+</body>
+</html>
+<?php
 
-echo combine($x, $y);
+
+echo $hash;
+
 
 ?>
