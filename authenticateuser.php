@@ -52,28 +52,37 @@ function login($username, $password){
             return true;
         }
         else{
+            header("Location: http://localhost/SuperSeniorsWiredHack/loginsample.php"); /* Redirect browser */
+            exit();
+        }
 
+
+    }
+        else{
             $stmt = $db->prepare("Select * from ORG where (coUserName = :username)");
             $stmt->bindValue(":username", $username);
             $stmt->execute();
 
 
-            if($stmt->rowCount() == 1) {
+            if($stmt->rowCount() == 1)
+            {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $hash = SHA1($row['salt'] . $password);
-                if ($hash == $row['HASH']) {
+                $hash = SHA1($row['salt'].$password);
+                if ($hash == $row['HASH'])
+                {
                     $_SESSION = array();
                     $_SESSION['username'] = $username; //Set the username var
                     $_SESSION['orgID'] = $row['id'];
                     header("Location: http://localhost/SuperSeniorsWiredHack/index.php"); /* Redirect browser */
                     exit();
                     return true;
-                } else {
+                }
+                else{
 
                     header("Location: http://localhost/SuperSeniorsWiredHack/loginsample.php"); /* Redirect browser */
                     exit();
                 }
-            }
+
         }
     }
     return false;
