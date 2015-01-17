@@ -23,15 +23,13 @@ catch(Exception $ex)
 $username= $_POST["username"];
 $password=$_POST["password"];
 $email= $_POST["email"];
-$username= $_POST["company"];
-$username= $_POST["address"];
-$username= $_POST["city"];
-$username= $_POST["zip"];
-$username= $_POST["state"];
-$username= $_POST["phone"];
-$username= $_POST["website"];
-
-
+$company= $_POST["company"];
+$address= $_POST["address"];
+$city= $_POST["city"];
+$zip= $_POST["zip"];
+$state= $_POST["state"];
+$phone= $_POST["phone"];
+$website= $_POST["website"];
 
 
 require 'saltgen.php';
