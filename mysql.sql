@@ -6,8 +6,8 @@ CREATE TABLE USER (
 id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
 userName VARCHAR(20) NOT NULL UNIQUE,
 email VARCHAR(30) NOT NULL UNIQUE,
-salt CHAR(60) NOT NULL,
-HASH CHAR(85),
+salt CHAR(61) NOT NULL,
+HASH CHAR(40),
 avatar TINYINT UNSIGNED DEFAULT '1'
 )ENGINE=InnoDB;
 
@@ -15,16 +15,13 @@ CREATE TABLE ORG (
 id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
 coUserName VARCHAR(20) NOT NULL UNIQUE,
 company VARCHAR(150) NOT NULL,
-salt CHAR(60) NOT NULL,
-HASH CHAR(85),
-addressOne VARCHAR(50) NOT NULL,
-addressTwo VARCHAR(50),
+salt CHAR(61) NOT NULL,
+HASH CHAR(40),
+address VARCHAR(50) NOT NULL,
 city VARCHAR (25) NOT NULL,
 state VARCHAR(2) NOT NULL,
 zip CHAR(5) NOT NULL,
-phoneOne VARCHAR(10) NOT NULL,
-phoneTwo VARCHAR(10),
-fax VARCHAR(10),
+phone VARCHAR(10) NOT NULL,
 email VARCHAR(30) NOT NULL UNIQUE,
 website VARCHAR(30) NOT NULL UNIQUE
 )ENGINE=InnoDB;
@@ -34,15 +31,9 @@ CREATE TABLE POST (
 id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
 title VARCHAR(50) NOT NULL,
 orgName VARCHAR(150),
-message VARCHAR(300) NOT NULL,
-likeCount MEDIUMINT UNSIGNED,
-description VARCHAR(150) NOT NULL,
+message VARCHAR(550) NOT NULL,
+likeCount MEDIUMINT UNSIGNED DEFAULT "1",
 userID INT UNSIGNED NOT NULL,
-<<<<<<< HEAD
-FOREIGN KEY (orgIDPost) REFERENCES ORG(id) ON DELETE SET '1' ON UPDATE
-CASCADE,
-=======
->>>>>>> 9d0a97d51a84a2714b85613a2d702538637ec65f
 FOREIGN KEY (userID) REFERENCES USER(id) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
@@ -61,16 +52,45 @@ orgID INT UNSIGNED NOT NULL,
 FOREIGN KEY (orgID) REFERENCES ORG(id) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
-insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
-state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "derksendesigner", "derksen@gmail.com", "MfdwT~DS8wuBGmk1fTwa4F=r6gKV|xGZKK=_G=SP_5JbXzjChC%wgCP*~I-q", "cbfc62607060c0112255f3764ca5ef1ea3ece4f8", "3");
 
-insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
-state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "theallknowningmckim", "mckim@gmail.com", "D7EKToQtMGT4f~zoIIO4|4=w_DUR*VhQuZ35kRJxv3LiUzN-Ou2bHY5L4o_m", "fed77f6f80c54aa4083ef40d1a67fd5f74efd6f1", "2");
 
-insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
-state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "frodo24", "frodo@gmail.com", "N6Zo%|CrTm5rXv2vgDs9L efDZ|bAE+Ha5D~F~-|r_hLi4Jv OPSTOWO6%GR", "638456d33c74953eebef2fa90e1f5e0f825ec203", "1");
 
-insert into ORG (id, coUserName, company, salt, hash, addressOne, addressTwo, city, 
-state, zip, phoneOne, phoneTwo, fax, email, website) VALUES (NULL, "amredcross", "American Red Cross", salt, hash, "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "besmersthebest", "besmer@gmail.com", "gCfl%UmD5*NvUT8m0=|d~VO5e=2*99piGLmHtsjUS3n^wU+1KvMBfseP45nr", "b5a6c19f5e17a6ed5d6df2b5c4e686552a2911f5", "4");
 
-, 
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "thackersurvivor", "thacker@gmail.com", "NV=ZgtM7bzlZ~NXpFj3y2uoPj+W6E1E2Y~z=S+z+bONp_N-Ii8S5VT3v|Lbf", "b982f29c249482c24a1252cbb98cf8ca9fa70660", "5");
+
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "thegreatandpowerfulolsen", "olsen@gmail.com", "vix=SQu2I||y OzlKI7Yd1lyZIlsqO-8u=|WMbs2yB9IFaZc*B%EoVS=c^5_", "4e4c89d89019fec9aba14b05351c2ba37265bdcd", "3");
+
+insert into USER (id, username, email, salt, HASH, avatar) VALUES (NULL, "dannleysprocess", "dannley@gmail.com", "^Q=YW1YCLjq4^hlr50AEZ9i*Vg-Ff-euRTa64d7Ur1uPDpYX|1Agsu=g_2v_", "34062b4bd4bd8d47d99468e8bb4fe34354efd755", "2");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "amredcross", "American Red Cross", "OBXLxMs oZRhqqs5eb*JALsznoaV+U~k%JkG|IPvS-u1cBo==J12EysdI^2y", "5b8afc64f89c1b8a2c917f201d3bd570a5daaa50", "200 Piedmont Blvd.", "Rock Hill", "SC", "29732", "803-329-6575", "schwartz37@gmail.com", "http://www.redcross.org/sc/rock-hill");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "bandgclub", "Boys & Girls clubs of York County", "Kdjbyh+ Ms=|2Z0EqK=nZfhHy2ahzXJSgsQZjEs=d 0~t0xsSmJrMsXm^Tx2 ", "17c4b8ff15278a5aa30aa553cd3e1a8dba820609", "410 E. Black Street", "Rock Hill", "SC", "29730", "803-324-7920", "bandgclub@gmail.com", "http://www.bgcyc.org");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "ycclinic", "York County Free Clinic", "4rha0qOFAtz-PxBC15oeQ3rFd2xwPStRpHn+^XxpCDapXjzv=Pz+zqfE4d|a ", "c515722e9b5d4a7c54510a18d87eff7f34ba1ca7", "410 Oakland Ave.", "Rock Hill", "SC", "29732", "803-366-6337", "freeschelter@gmail.com", "http://yorkcountyfreeclinic.org/index.php");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "unitedrockhill", "United Way", "jSh4=MIhIBtVzGttMq6fmit3Xr5EapXa3+kOnu=PVm~j0LH|lT~3Nz%K% g*", "b87793b9225407e237abdbbe0864af1dcb4129be", "226 NorthPark Drive Suite 100", "Rock Hill", "SC", "29731", "803-324-2735", "rhunitedway@gmail.com", "http://www.unitedwayofyc.org");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "pgrmsinn", "Pilgrims Inn", "1WmUYkueGv+gp29G9 p*9*bK5b*p4 n1|f|-_Mk^3hfRRH~i7jV|UBcG*o8m", "43e48c1ed09c37c89daedf0a7755065459065fd6", "825 N. Anderson Road", "Rock Hill", "SC", "29730", "803-328-1728", "rhunitedway@gmail.com", "http://pilgrimsinn.org/contact-us/");
+
+insert into ORG (id, coUserName, company, salt, HASH, address, city, 
+state, zip, phone, email, website) VALUES (NULL, "carecntr", "Fort Mill Care Center", "KcmpplujtPZ| Z=6W%O^205zaJsQFGhh85lUi QmbGAZ%L1mEGoBHys-9mH9", "5dabd300309ec592f46cb6758111433543708822", "818 Tom Hall Street Suite 114", "Fort Mill", "SC", "29715", "803-547-7620", "carecntr@gmail.com", "http://www.fortmillcarecenter.org/");
+
+insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, "Red Cross Drive", "American Red Cross", "This was so fun!  We made giving blood fun.  I helped recruit people at a local school and gave them a free AJAX lesson for their donation.  We are helping those in need and educating at the same time.  This was a great collaboration.", "1", "4");
+
+insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, "Bee Day", "Boys and Girls Club", "We took a group of girls and boys to a bee farms.  The kids really enjoyed it and we learned a lot too.  This event allowed us to see how the organization works and get involved.", "1", "5");
+
+insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, "Meal Drive", "Meals on Wheels", "I took meals all over Rock Hill and met a lot of lovely people.  I really liked helping people and getting to know them at the same time.  I am consdering helping out at a local soup kitchen also.  This experience helped me realize how rewarding these opportunities can be for me while helping out in the community at the same time.", "1", "3");
+
+insert into POST (id, title, orgName, message, likeCount, userID) Values (NULL, "United in Design", "United Way", "We helped United Way prepare for their yearly drive.  We not only assited with material distribution, but we helped them with the design.  Then we participated in a food drive and delivered the food to a local shelter.", "1", "1");   
+
+insert into EVENT (id, title, startDate, startTime, endTime, description, streetAddress, city, state, zip, orgID) VALUES (NULL, "Morgan Freeman: A narration of life", "2015/02/14", "2015-01-14 16:30:01", "2015-01-14 18:30:01", "Morgan Freeman tells the creation of the world in his classical uplifiting style.  Enjoy an evening of Morgan Freeman.", "245 Morgan Freeman Center", "Rock Hill", "SC", "29730", "1");   
+
