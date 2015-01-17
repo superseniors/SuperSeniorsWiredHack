@@ -9,6 +9,9 @@ session_start();
 
 
 require 'saltgen.php';
+require "authenticateuser.php";
+
+
 
 
 
@@ -17,6 +20,7 @@ require 'saltgen.php';
 <html>
 <head></head>
 <body>
+<p>create an account</p>
     <form method="post" action="insertuser.php">
         <input name="username" type="text">
         <input name="password" type="password">
@@ -24,7 +28,20 @@ require 'saltgen.php';
         <input type="submit" name="Submit">
     </form>
 
+<p>sign into an account</p>
+<form method="post" action="authenticateuser.php">
+    <input name="username" type="text">
+    <input name="password" type="password">
 
+    <input type="submit" name="Submit">
+</form>
+
+<?php
+
+
+
+
+?>
 
 </body>
 
