@@ -19,6 +19,8 @@ require 'saltgen.php';
 <form method="post" action="insertorg.php">
     <label for="username">username</label>
     <input name="username" type="text"><br/><br/>
+    <label for="company">company</label>
+    <input name="company" type="text"><br/><br/>
     <label for="password">password</label>
     <input name="password" type="password"><br/><br/>
     <label for="email">email</label>
